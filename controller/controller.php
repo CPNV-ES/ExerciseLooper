@@ -6,4 +6,9 @@ function homePage()
 {
     require "view/homeView.php";
 }
+
+function takeExercise()
+{
+    require "view/takeExerciseView.php";
+}
 ?>
