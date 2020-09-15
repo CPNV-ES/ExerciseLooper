@@ -3,7 +3,7 @@ ob_start();
 ?>
     <header class="dashboard">
         <section class="container">
-            <p><img src="../Contenu/img/logo.png" /></p>
+            <p><img src="../content/img/logo.png" /></p>
             <h1>Exercise<br>Looper</h1>
         </section>
     </header>
@@ -21,5 +21,5 @@ ob_start();
         </section>
     </div>
 <?php
-$contenu = ob_get_clean();
-require "gabarit.php";
+$content = ob_get_clean();
+require "template.php";
