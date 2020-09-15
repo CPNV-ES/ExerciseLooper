@@ -1,9 +1,6 @@
-<?php
-ob_start();
-?>
 <header class="heading results">
   <section class="container">
-    <a href="../index.php"><img src="../content/img/logo.png" /></a>    
+    <a href="/"><img src="../content/img/logo.png" /></a>
   </section>
 </header>
 
@@ -103,8 +100,3 @@ ob_start();
   </section>
 </div>
 </main>
-
-<?php
-$content = ob_get_clean();
-require "template.php";
-?>

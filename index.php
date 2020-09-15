@@ -1,33 +1,36 @@
 <?php
+
 define('SITE_PATH', realpath(dirname(__FILE__)));
 $site_url = str_replace('\\', '/', str_replace(realpath( $_SERVER['DOCUMENT_ROOT']), '', SITE_PATH));
 define('SITE_URL', 'http://'.$_SERVER['HTTP_HOST']. $site_url);
 
-require_once SITE_PATH . "\controller\controller.php";
+require_once SITE_PATH . "/controller/controller.php";
 
-try {
-    
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
-        switch ($action) {
-            
-            case 'homeView' :
-                homePage();
-                break;
-           
-            case 'take' :
-                takeExercise();
-                break;
-            /*
-            case 'vue_inscription' :
-                inscription(@$_POST['fisrt_name'], @$_POST['last_name'], @$_POST['email'], @$_POST['username'], @$_POST['password'], @$_POST['conf_password']);
-                break;*/
-            default :
-                throw new Exception("Action non valide");
-        }
-    } else
-        
+ob_start();
+
+$request = explode("?", $_SERVER['REQUEST_URI'], 2);
+$next = isset($_GET['next']) ? $_GET['next'] : false;
+
+
+switch ($request[0]) {
+    default:
+        http_response_code(404);
+        errorPage404();
+        break;
+    case '':
+    case '/' :
         homePage();
-} catch (Exception $e) {
-    erreur($e->getMessage());
+        break;
+    case '/create' :
+        createExercise();
+        break;
+    case '/take' :
+        takeExercise();
+        break;
+    case '/manage' :
+        manageExercise();
+        break;
 }
+
+$content = ob_get_clean();
+require "view/template.php";

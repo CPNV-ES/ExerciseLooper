@@ -1,7 +1,4 @@
-<?php
-ob_start();
-?>
-    <header class="dashboard">
+<header class="dashboard">
         <section class="container">
             <p><img src="../content/img/logo.png" /></p>
             <h1>Exercise<br>Looper</h1>
@@ -20,6 +17,3 @@ ob_start();
             </div>
         </section>
     </div>
-<?php
-$content = ob_get_clean();
-require "template.php";
