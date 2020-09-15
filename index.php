@@ -14,11 +14,11 @@ try {
             case 'homeView' :
                 homePage();
                 break;
-           /*
-            case 'vue_observation' :
-                observation();
+           
+            case 'take' :
+                takeExercise();
                 break;
-            
+            /*
             case 'vue_inscription' :
                 inscription(@$_POST['fisrt_name'], @$_POST['last_name'], @$_POST['email'], @$_POST['username'], @$_POST['password'], @$_POST['conf_password']);
                 break;*/

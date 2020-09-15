@@ -10,13 +10,13 @@ ob_start();
     <div class="container dashboard">
         <section class="row">
             <div class="column">
-                <a class="button answering column" href="exercises/answering.html">Take an exercise</a>
+                <a class="button answering column" href="/take">Take an exercise</a>
             </div>
             <div class="column">
-                <a class="button managing column" href="exercises/new.html">Create an exercise</a>
+                <a class="button managing column" href="/create">Create an exercise</a>
             </div>
             <div class="column">
-                <a class="button results column" href="exercises.html">Manage an exercise</a>
+                <a class="button results column" href="manage">Manage an exercise</a>
             </div>
         </section>
     </div>
