@@ -3,7 +3,7 @@ ob_start();
 ?>
 <header class="heading managing">
   <section class="container">
-    <a href="../index.php"><img src="../content/img/logo.png" /></a>
+    <a href="/"><img src="../content/img/logo.png" /></a>
     <span class="exercise-label">New exercise</span>
   </section>
 </header>
