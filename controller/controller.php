@@ -14,12 +14,12 @@ function takeExercise()
 
 function createExercise()
 {
-    require "view/takeExerciseView.php";
+    require "view/createExerciseView.php";
 }
 
 function manageExercise()
 {
-    require "view/takeExerciseView.php";
+    require "view/showExerciseView.php";
 }
 
 function errorPage404()
