@@ -30,6 +30,9 @@ switch ($request[0]) {
     case '/manage' :
         manageExercise();
         break;
+    case '/newExercise' :
+        newExercise();
+        break;
 }
 
 $content = ob_get_clean();

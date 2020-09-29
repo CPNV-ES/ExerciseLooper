@@ -27,5 +27,8 @@ function errorPage404()
     require "view/errorPage404.php";
 }
 
-
+function newExercise()
+{
+    require "view/fieldExerciseView.php";
+}
 ?>
