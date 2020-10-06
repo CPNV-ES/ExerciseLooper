@@ -25,23 +25,37 @@ class exercise
         }
     }
 
-    
-    public function deleteById($id)
+
+    public static function deleteById($id)
     {
         $db = db::connect();
-        $req = "DELETE FROM `exercises` WHERE idExercises = ?" ;
+        $req = "DELETE FROM `exercises` WHERE idExercises = ?";
         $stmt = $db->prepare($req);
         $stmt->execute(array($id));
-
     }
 
-
-    public static function updateById($id,$editedTitle,$editedState)
+    public static function createExercise($title)
     {
         $db = db::connect();
-        $req = "UPDATE `exercises` SET title=?,state=?  WHERE idExercises = ? " ;
+        $req = "INSERT INTO `exercises` VALUES(`idExercises`,?,?)";
         $stmt = $db->prepare($req);
-        $stmt->execute(array($editedTitle,$editedState,$id));
+        $stmt->execute(array($title,1));
+    }
+
+    public static function updateById($id, $editedTitle, $editedState)
+    {
+        $db = db::connect();
+        $req = "UPDATE `exercises` SET title=?,state=?  WHERE idExercises = ? ";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($editedTitle, $editedState, $id));
+    }
+
+    public static function updateStateById($editedState,$id)
+    {
+        $db = db::connect();
+        $req = "UPDATE `exercises` SET state=?  WHERE idExercises = ? ";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($editedState,$id));
     }
 
 
@@ -64,6 +78,4 @@ class exercise
         }
         return $array;
     }
-
-    
 }
