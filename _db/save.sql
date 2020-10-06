@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `exercises` (
-  `idExercises` int NOT NULL,
+  `idExercises` INT NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `state` int NOT NULL,
    CONSTRAINT exercises_PK PRIMARY KEY (idExercises)
@@ -56,7 +56,7 @@ INSERT INTO `exercises` (`idExercises`, `title`, `state`) VALUES
 --
 
 CREATE TABLE `questions` (
-  `idQuestions` int NOT NULL,
+  `idQuestions` INT NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `type` int NOT NULL,
   `FK_idExercises` int NOT NULL,
@@ -144,7 +144,7 @@ INSERT INTO `questions` (`idQuestions`, `title`, `type`, `FK_idExercises`) VALUE
 --
 
 CREATE TABLE `responses` (
-  `idResponses` int NOT NULL,
+  `idResponses` INT NOT NULL AUTO_INCREMENT,
   `content` varchar(100) DEFAULT NULL,
    `FK_idQuestions` int NOT NULL,
     CONSTRAINT responses_PK PRIMARY KEY (idResponses),
@@ -291,9 +291,11 @@ INSERT INTO `responses` (`idResponses`, `FK_idQuestions`, `content`) VALUES
 --
 
 CREATE TABLE `fullfilments` (
+  `idFullfilments` INT NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL,
     `FK_idExercises` INT NOT NULL,
     `FK_idResponses` INT NOT NULL,
+  CONSTRAINT fullfilments_PK PRIMARY KEY (idFullfilments),
   INDEX `FK_idExercises` (FK_idExercises),
   INDEX `FK_idResponses` (FK_idResponses),
   FOREIGN KEY (FK_idResponses)
