@@ -9,6 +9,14 @@ class question{
     public $type;
     public $FK_idExercises;
 
+    public function __construct($id,$title,$type,$fk_ex)
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->type = $type;
+        $this->FK_idExercises = $fk_ex;
+    }
+
     public static function getByIdExercises($id)
     {
         $db = db::connect();
@@ -19,11 +27,7 @@ class question{
 
         foreach ($result as $Key) {
 
-            $que = new question();
-            $que->id = $Key['idQuestions'];
-            $que->title = $Key['title'];
-            $que->type= $Key['type'];
-            $que->FK_idExercises= $Key['FK_idExercises'];
+            $que = new question($Key['idQuestions'],$Key['title'],$Key['type'],$Key['FK_idExercises']);
             $array[] = clone $que;
         }
         return $array;

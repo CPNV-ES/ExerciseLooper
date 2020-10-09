@@ -6,6 +6,10 @@ class response{
     public $content;
     public $FK_idQuestions;
 
+    public  function __construct()
+    {
+        
+    }
     public static function createResponse($content)
     {
         $db = db::connect();
