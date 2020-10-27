@@ -1,5 +1,5 @@
 <?php
-require_once "model/model.php";
+require_once "model/exercise.php";
 
 // Affichage de la page de l'accueil
 function homePage()
@@ -29,6 +29,9 @@ function errorPage404()
 
 function newExercise()
 {
+    $value = $_POST['exercise']['title'];
+    exercise::createExercise($value);
     require "view/fieldExerciseView.php";
 }
+
 ?>
