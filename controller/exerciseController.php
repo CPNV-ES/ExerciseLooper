@@ -26,11 +26,27 @@ function errorPage404()
 {
     require "view/errorPage404.php";
 }
+function destroyExercise()
+{
+
+    
+}
 
 function newExercise()
 {
     $value = $_POST['exercise']['title'];
-    exercise::createExercise($value);
+    $idExercise = exercise::createExercise($value);
+    $_SESSION['exId'] = $idExercise;
+    require "view/fieldExerciseView.php";
+}
+
+function displayExercise($id)
+{
+    $ex = new exercise();
+    $ex->getById($id);
+    $questions = question::getByIdExercises($ex->id);
+    $_SESSION['questions'] =  $questions;
+    $_SESSION['exId'] = $id;
     require "view/fieldExerciseView.php";
 }
 
