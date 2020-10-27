@@ -1,6 +1,6 @@
 <?php
 
-include "db.php";
+include_once "db.php";
 class exercise
 {
 
@@ -40,6 +40,7 @@ class exercise
         $req = "INSERT INTO `exercises` VALUES(`idExercises`,?,?)";
         $stmt = $db->prepare($req);
         $stmt->execute(array($title,1));
+        return $db->lastInsertId();
     }
 
     public static function updateById($id, $editedTitle, $editedState)
