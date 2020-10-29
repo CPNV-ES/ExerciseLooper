@@ -38,15 +38,19 @@ CREATE TABLE `exercises` (
 -- Déchargement des données de la table `exercises`
 --
 
-INSERT INTO `exercises` (`idExercises`, `title`, `state`) VALUES
-(1, 'TestExercice', 1),
-(3, 'Exercice2', 1),
-(17, 'Exercice4', 1),
-(18, 'Exercice5', 1),
-(19, 'Exercice6', 1),
-(20, 'Exercice7', 1),
-(21, 'Exercice8', 1),
-(22, 'Exercice9', 1);
+INSERT INTO `exercises` (`title`, `state`) VALUES
+('TestExercice', 1),('Exercice2', 1),('Exercice4', 1),('Exercice5', 2),('Exercice6', 3),('Exercice7', 2),('Exercice8', 1),('Exercice9', 3),("Megan Justice",2),
+("Lani Velez",2),("Fitzgerald Mcfarland",1),("Kristen Kidd",2),("Stuart Allen",2),("Cade Randall",1),("Kirsten Weber",3),("Clark Mitchell",1),("Yoshio Lester",1),("Erasmus Buck",1),
+("Jeremy Robles",1),("Cecilia Raymond",2),("Georgia Woodard",3),("Dai Mckee",1),("Evan Gould",2),("Maggie Mcbride",2),("Hammett Ewing",2),("Taylor Harvey",2),("Bruce Moreno",1),("Micah Mcguire",3),
+("Quincy Kennedy",3),("Mallory Moon",1),("Nissim Whitaker",3),("Holmes Whitaker",3),("Amethyst Thomas",1),("Lillian Summers",3),("Anne George",3),("Madonna Salas",2),("Audra Pickett",1),("Brendan Murphy",3),
+("Leo Hancock",1),("Jayme Duke",1),("Geraldine Macdonald",3),("Mikayla Tucker",2),("Abdul Travis",1),("Laura Waters",1),("Gabriel Rice",1),("Desiree Noel",1),("Peter Rich",1),("Jessica Guthrie",3),
+("Aquila Bray",2),("Adria Horne",3),("Alea Morse",1),("Quinlan Simon",3),("Audrey Guerrero",2),("Jillian Landry",3),("Kathleen Paul",1),("Emerald Bernard",1),("Charde Kerr",2),("Cameron Robbins",2),
+("Dakota Koch",3),("Hop Pearson",1),("Hunter Oneill",1),("Josephine Bright",3),("Imogene Mckee",1),("Colton Donovan",2),("Harriet Mcleod",3),("Ruby Dominguez",2),("Aristotle Good",1),("Velma Hudson",2),
+("Aretha Castaneda",2),("Quynn Bishop",3),("Jarrod Beck",1),("Amos Chavez",2),("Hop Brady",1),("Forrest Harding",1),("Emerald Shepard",2),("Lyle Levine",2),("Kameko Kennedy",3),("Thor Romero",1),
+("Zenia Good",3),("Naomi Summers",3),("Gareth Ayala",1),("Glenna Greene",2),("Louis Porter",2),("Mannix Dale",3),("Todd Watts",3),("Venus Moody",2),("William Washington",3),("Fredericka Vang",3),
+("Samantha Harrington",2),("Jenna Bond",2),("Zeus Dennis",3),("Yardley Carroll",1),("Valentine Johnston",2),("Elijah Flowers",3),("Alma Mcpherson",1),("Aimee Allen",2),("Judith Odonnell",1),("Lana Pruitt",1),
+("Hayes Dyer",3),("Isadora Acosta",3),("Jasper Dalton",1),("Miranda Atkinson",3),("Ignatius Morrison",3),("Carol Booker",3),("Cruz Kramer",3),("Logan Coffey",2),("Summer Slater",2),("Gloria Roman",1);
+
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------

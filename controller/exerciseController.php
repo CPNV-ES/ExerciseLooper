@@ -51,5 +51,5 @@ function displayExercise($id)
     $_SESSION['exId'] = $id;
     require "view/fieldExerciseView.php";
 }
-}
+
 ?>

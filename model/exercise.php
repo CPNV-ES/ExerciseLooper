@@ -1,6 +1,5 @@
 <?php
 
-include_once "db.php";
 class exercise
 {
 
@@ -78,5 +77,14 @@ class exercise
             $array[] = clone $ex;
         }
         return $array;
+    }
+
+    public static function getByState($state)
+    {
+        $db = db::connect();
+        $stmt =$db->prepare("SELECT `idExercises`,`title`,`state` FROM `exercises` WHERE `state` = ?");
+        $stmt->execute(array($state));
+        $result = $stmt->fetchAll();
+        return $result;
     }
 }

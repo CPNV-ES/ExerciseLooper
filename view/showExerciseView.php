@@ -1,3 +1,7 @@
+
+<?php
+$modelEx = new exercise();
+?>
 <header class="heading results">
   <section class="container">
     <a href="/"><img src="../content/img/logo.png" /></a>
@@ -16,9 +20,23 @@
           <th></th>
         </tr>
       </thead>
-
       <tbody>
           <!--boucle pour afficher contenu-->
+        <?php
+          foreach($modelEx->getByState(1) as $value)
+          {?>
+          <tr>
+              <td>
+              <?= $value['title']; ?>
+              </td>
+          <td>
+              <a title="Manage fields" href="exercises/148/results.html"><i class="fa fa-edit"></i></a>
+              <a title="Destroy" rel="nofollow" data-method="put" href="<?php $modelEx->deleteById($value['idExercises']) ?>"><i class="fa fa-trash"></i></a>
+          </td>
+          </tr>
+          <?php
+          }
+        ?>
       </tbody>
     </table>
   </section>
@@ -34,24 +52,23 @@
       </thead>
 
       <tbody>
-          <?php
-          /*boucle afficher contenu
-          ex: <tr>
-            <td>ewrwe</td>
+      <?php
+          foreach($modelEx->getByState(2) as $value)
+          {?>
+            <tr>
+              <td>
+              <?php 
+                echo $value['title'];
+              ?>
+              </td>
             <td>
               <a title="Show results" href="exercises/148/results.html"><i class="fa fa-chart-bar"></i></a>
               <a title="Close" rel="nofollow" data-method="put" href="exercises/148785c.html?exercise%5Bstatus%5D=closed"><i class="fa fa-minus-circle"></i></a>
             </td>
-          </tr>*/
+            </tr> 
+          <?php
+          }
           ?>
-          <!-- exemple-->
-          <tr>
-            <td>dadasdd</td>
-            <td>
-              <a title="Show results" href="exercises/156/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a title="Close" rel="nofollow" data-method="put" href="exercises/156785c.html?exercise%5Bstatus%5D=closed"><i class="fa fa-minus-circle"></i></a>
-            </td>
-          </tr>
       </tbody>
     </table>
   </section>
@@ -68,32 +85,23 @@
 
       <tbody>
           <tr>
-            <td>Linux base CLI commands</td>
+          <?php
+          foreach($modelEx->getByState(2) as $value)
+          {?>
+            <tr>
+              <td>
+              <?php 
+                echo $value['title'];
+              ?>
+              </td>
             <td>
-              <a title="Show results" href="exercises/146/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="exercises/146.html"><i class="fa fa-trash"></i></a>
+              <a title="Show results" href="exercises/148/results.html"><i class="fa fa-chart-bar"></i></a>
+              <a title="Destroy" rel="nofollow" data-method="put" href="exercises/148785c.html?exercise%5Bstatus%5D=closed"><i class="fa fa-trash"></i></a>
             </td>
-          </tr>
-          <tr>
-            <td>dim_test</td>
-            <td>
-              <a title="Show results" href="exercises/151/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="exercises/151.html"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Test Andi</td>
-            <td>
-              <a title="Show results" href="exercises/152/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="exercises/152.html"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>dylan 2</td>
-            <td>
-              <a title="Show results" href="exercises/155/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="exercises/155.html"><i class="fa fa-trash"></i></a>
-            </td>
+            </tr> 
+          <?php
+          }
+          ?>
           </tr>
       </tbody>
     </table>

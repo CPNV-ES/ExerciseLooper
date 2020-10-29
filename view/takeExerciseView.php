@@ -1,3 +1,7 @@
+
+<?php
+  $modelEx = new exercise();
+?>
 <header class="heading answering">
   <section class="container">
     <a href="/"><img src="../content/img/logo.png" /></a>
@@ -6,24 +10,14 @@
 </header>
 
 <main class="container"> 
-<?php 
-/*
-//exemple à faire dans une boucle
-<ul class="ansering-list">
+<ul class="ansering-list"> 
+  <?php foreach($modelEx->getByState(1) as $value) {?>
     <li class="row">
       <div class="column card">
-        <div class="title">ewrwe</div>
+        <div class="title"> <?php echo($value['title']);?></div>
         <a class="button" href="148/fulfillments/new.html">Take it</a>
       </div>
     </li>
 </ul>
-*/?>
-<ul class="ansering-list">
-    <li class="row">
-      <div class="column card">
-        <div class="title">ewrwe</div>
-        <a class="button" href="148/fulfillments/new.html">Take it</a>
-      </div>
-    </li>
-</ul>
+  <?php }?>
 </main>
