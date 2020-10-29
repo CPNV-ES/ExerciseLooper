@@ -31,7 +31,7 @@
                 <td>
                   <p><?= $val->type ?></p>
                 </td>
-                <td><a class='fa fa-edit' href='/editQuestion?id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/deleteQuestion?id=<?= $val->id ?>'></a></td>
+                <td><a class='fa fa-edit' href='/controller=question&action=editQuestion&id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/?controller=question&action=deleteQuestion&id=<?= $val->id ?>'></a></td>
               </tr>
           <?php endforeach;
 
@@ -47,7 +47,7 @@
     </section>
     <section class="column">
       <h1>New Field</h1>
-      <form action="/createQuestion?" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="xY6ba6Wr09iqKGfDHd0wj4PniWUUszrvYyM7HO9H346Wn1FcQp541Sa8Eu1GGZ/W1zqJAoGxg6Q93fq6/Y0+jg==" />
+      <form action="/?controller=question&action=createQuestion" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="xY6ba6Wr09iqKGfDHd0wj4PniWUUszrvYyM7HO9H346Wn1FcQp541Sa8Eu1GGZ/W1zqJAoGxg6Q93fq6/Y0+jg==" />
 
         <div class="field">
           <label for="field_label">Label</label>
