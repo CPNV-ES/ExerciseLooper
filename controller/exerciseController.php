@@ -1,6 +1,8 @@
 <?php
 require_once "model/exercise.php";
 
+class exerciseController
+{
 // Affichage de la page de l'accueil
 function homePage()
 {
@@ -49,5 +51,5 @@ function displayExercise($id)
     $_SESSION['exId'] = $id;
     require "view/fieldExerciseView.php";
 }
-
+}
 ?>
