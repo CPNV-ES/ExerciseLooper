@@ -8,10 +8,7 @@
 <main class="container">
     <h1>New Exercise</h1>
 
-<form method="post" action="/newExercise">
-    <input name="utf8" type="hidden" value="&#x2713;" />
-    <input type="hidden" name="authenticity_token" value="keQm20ZmM/t7SblAZBCZKvC8FEhcgpE1JtF5loIDSy2zqipG8iPkccVbkrN6peItMkYgegztKUoIo1rMbHtlaw==" />
-
+<form method="post" action="/?controller=exercise&action=newExercise">
   <div class="field">
     <label for="exercise_title">Title</label>
     <input type="text" name="exercise[title]" id="exercise_title" />
