@@ -1,7 +1,9 @@
 <?php 
 
 require_once "model/question.php";
+class questionController{
 
+    
 function createQuestion()
 {
     
@@ -22,7 +24,7 @@ function createQuestion()
             break;
     }
     question::createQuestion($questionTitle,$typeInt,$ExId);
-    header("Location: /displayExercise?id=".$ExId);
+    header("Location: /?controller=exercise&action=displayExercise&id=".$ExId);
 
     unset($_POST);      
 }
@@ -36,8 +38,7 @@ function getQuestion()
 function deleteQuestion()
 {
     question::deleteQuestionById($_GET['id']);
-    header("Location: /displayExercise?id=".$_SESSION['exId']);
+    header("Location: /?controller=exercise&action=displayExercise&id=".$_SESSION['exId']);
 }
-
-
+}
 ?>
