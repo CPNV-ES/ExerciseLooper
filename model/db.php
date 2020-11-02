@@ -4,8 +4,8 @@ class db
 {
     static function connect()
     {
-        $connexion = new PDO('mysql:host=localhost; dbname=ExerciseLooper', 'loop', '1234');
-        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $connexion;
+        $ini_array = parse_ini_file("dbconfig.ini");
+        $dsn= "mysql:host=$ini_array[host];dbname=$ini_array[dbname]";
+        return new PDO($dsn, $ini_array['user'], $ini_array['password']);
     }
 }
