@@ -1,10 +1,12 @@
 <?php
+
 session_start();
 require_once "controller/exerciseController.php";
 require_once "controller/questionController.php";
 
 $controller = $_GET['controller'] . "Controller";
 $action = $_GET['action'];
+
 if(isset($_GET['id'])){
     $id = intval($_GET['id']);
 }

@@ -8,3 +8,5 @@ bitnami-aws-464302590973.pem
 .vscode/launch.json
 
 connectToAws.sh
+
+model/dbconfig.ini

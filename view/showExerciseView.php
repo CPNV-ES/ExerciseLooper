@@ -31,7 +31,7 @@ $modelEx = new exercise();
               </td>
           <td>
               <a title="Manage fields" href="exercises/148/results.html"><i class="fa fa-edit"></i></a>
-              <a title="Destroy" rel="nofollow" data-method="put" href="<?php $modelEx->deleteById($value['idExercises']) ?>"><i class="fa fa-trash"></i></a>
+              <a title="Destroy" rel="nofollow" data-method="put" href="?controller=exercise&action=destroyExercise&id=<?= $value['idExercises']?>"><i class="fa fa-trash"></i></a>
           </td>
           </tr>
           <?php

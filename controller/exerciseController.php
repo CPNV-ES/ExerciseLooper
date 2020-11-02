@@ -30,8 +30,9 @@ class exerciseController
     }
     function destroyExercise()
     {
-
-        
+        $value = $_GET['id'];
+        exercise::deleteById($value);
+        require "view/showExerciseView.php";
     }
 
     function newExercise()
