@@ -22,21 +22,20 @@ $modelEx = new exercise();
       </thead>
       <tbody>
           <!--boucle pour afficher contenu-->
-        <?php
-          foreach($modelEx->getByState(1) as $value)
-          {?>
+        <?php foreach($modelEx->getByState(1) as $value): ?>
           <tr>
               <td>
               <?= $value['title']; ?>
               </td>
           <td>
+              <?php if($array = question::getByIdExercises($value['idExercises'])): ?>
+                  <a title="Be ready for answers" href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=2"><i class="fa fa-comment"></i></a>
+              <?php endif;?>
               <a title="Manage fields" href="exercises/148/results.html"><i class="fa fa-edit"></i></a>
-              <a title="Destroy" rel="nofollow" data-method="put" href="?controller=exercise&action=destroyExercise&id=<?= $value['idExercises']?>"><i class="fa fa-trash"></i></a>
+              <a title="Destroy" data-confirm="Are You Sure ?" rel="nofollow" data-method="put" href="?controller=exercise&action=destroyExercise&id=<?= $value['idExercises']?>"><i class="fa fa-trash"></i></a>
           </td>
           </tr>
-          <?php
-          }
-        ?>
+        <?php endforeach;?>
       </tbody>
     </table>
   </section>
@@ -52,23 +51,18 @@ $modelEx = new exercise();
       </thead>
 
       <tbody>
-      <?php
-          foreach($modelEx->getByState(2) as $value)
-          {?>
+      <?php foreach($modelEx->getByState(2) as $value): ?>
             <tr>
-              <td>
-              <?php 
-                echo $value['title'];
-              ?>
-              </td>
+                <td>
+                    <?= $value['title']; ?>
+                </td>
             <td>
-              <a title="Show results" href="exercises/148/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a title="Close" rel="nofollow" data-method="put" href="exercises/148785c.html?exercise%5Bstatus%5D=closed"><i class="fa fa-minus-circle"></i></a>
+                <a title="Show results" href="exercises/148/results.html"><i class="fa fa-chart-bar"></i></a>
+                <a title="Move to building"  href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=1"><i class="fa fa-cube"></i></a>
+                <a title="Close" href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=3"><i class="fa fa-minus-square"></i></a>
             </td>
             </tr> 
-          <?php
-          }
-          ?>
+      <?php endforeach;?>
       </tbody>
     </table>
   </section>
@@ -85,23 +79,17 @@ $modelEx = new exercise();
 
       <tbody>
           <tr>
-          <?php
-          foreach($modelEx->getByState(2) as $value)
-          {?>
+          <?php foreach($modelEx->getByState(3) as $value): ?>
             <tr>
               <td>
-              <?php 
-                echo $value['title'];
-              ?>
+                  <?= $value['title']; ?>
               </td>
             <td>
               <a title="Show results" href="exercises/148/results.html"><i class="fa fa-chart-bar"></i></a>
-              <a title="Destroy" rel="nofollow" data-method="put" href="exercises/148785c.html?exercise%5Bstatus%5D=closed"><i class="fa fa-trash"></i></a>
-            </td>
-            </tr> 
-          <?php
-          }
-          ?>
+                <a title="Move to answering" href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=2"><i class="fa fa-comment"></i></a>
+                <a title="Destroy" data-confirm="Are You Sure ?" rel="nofollow" data-method="put" href="?controller=exercise&action=destroyExercise&id=<?= $value['idExercises']?>"><i class="fa fa-trash"></i></a>
+            </tr>
+          <?php endforeach;?>
           </tr>
       </tbody>
     </table>

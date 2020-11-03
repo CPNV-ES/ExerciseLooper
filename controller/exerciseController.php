@@ -24,6 +24,13 @@ class exerciseController
         require "view/showExerciseView.php";
     }
 
+    function updateStateExercise()
+    {
+        $editedvalue = $_GET['editedState'];
+        $value = $_GET['id'];
+        exercise::updateStateById($editedvalue,$value);
+        require "view/showExerciseView.php";
+    }
     function errorPage404()
     {
         require "view/errorPage404.php";
