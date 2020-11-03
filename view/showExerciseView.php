@@ -31,7 +31,7 @@ $modelEx = new exercise();
               <?php if($array = question::getByIdExercises($value['idExercises'])): ?>
                   <a title="Be ready for answers" href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=2"><i class="fa fa-comment"></i></a>
               <?php endif;?>
-              <a title="Manage fields" href="exercises/148/results.html"><i class="fa fa-edit"></i></a>
+              <a title="Manage fields" href="?controller=exercise&action=displayExercise&id=<?=$value['idExercises']?>"><i class="fa fa-edit"></i></a>
               <a title="Destroy" data-confirm="Are You Sure ?" rel="nofollow" data-method="put" href="?controller=exercise&action=destroyExercise&id=<?= $value['idExercises']?>"><i class="fa fa-trash"></i></a>
           </td>
           </tr>
