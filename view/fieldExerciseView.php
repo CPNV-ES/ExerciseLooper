@@ -31,7 +31,7 @@
                 <td>
                   <p><?= $val->type ?></p>
                 </td>
-                <td><a class='fa fa-edit' href='/controller=question&action=editQuestion&id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/?controller=question&action=deleteQuestion&id=<?= $val->id ?>'></a></td>
+                <td><a class='fa fa-edit' href='/?controller=question&action=getQuestion&id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/?controller=question&action=deleteQuestion&id=<?= $val->id ?>'></a></td>
               </tr>
           <?php endforeach;
 
