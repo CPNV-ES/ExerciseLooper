@@ -1,7 +1,3 @@
-
-<?php
-$modelEx = new exercise();
-?>
 <header class="heading results">
   <section class="container">
     <a href="/"><img src="../content/img/logo.png" /></a>
@@ -57,7 +53,7 @@ $modelEx = new exercise();
                     <?= $value['title']; ?>
                 </td>
             <td>
-                <a title="Show results" href="exercises/148/results.html"><i class="fa fa-chart-bar"></i></a>
+                <a title="Show results" href="?controller=response&action=displayResults&id=<?=$value['idExercises']?>"><i class="fa fa-chart-bar"></i></a>
                 <a title="Move to building"  href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=1"><i class="fa fa-cube"></i></a>
                 <a title="Close" href="?controller=exercise&action=updateStateExercise&id=<?=$value['idExercises']?>&editedState=3"><i class="fa fa-minus-square"></i></a>
             </td>

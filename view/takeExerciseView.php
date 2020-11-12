@@ -1,7 +1,3 @@
-
-<?php
-  $modelEx = new exercise();
-?>
 <header class="heading answering">
   <section class="container">
     <a href="/"><img src="../content/img/logo.png" /></a>

@@ -16,7 +16,14 @@ class fullfilments{
         $this->FK_idResponses = $fk_resp;
     }
 
-
+    public static function create($idExercise,$idResponses)
+    {
+        $db = db::connect();
+        $date = date("Y.m.d","hh.mm.ss");
+        $req = "INSERT INTO `fullfilments` VALUES(`idExercises`,?,?,?)";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($date,$idExercise,$idResponses));
+    }
 
     public static function create($idExercise,$idResponses)
     {
