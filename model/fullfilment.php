@@ -16,8 +16,6 @@ class fullfilments{
         $this->FK_idResponses = $fk_resp;
     }
 
-
-
     public static function create($idExercise,$idResponses)
     {
         $db = db::connect();

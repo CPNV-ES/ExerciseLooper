@@ -31,7 +31,7 @@
                 <td>
                   <p><?= $val->type ?></p>
                 </td>
-                <td><a class='fa fa-edit' href='/controller=question&action=editQuestion&id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/?controller=question&action=deleteQuestion&id=<?= $val->id ?>'></a></td>
+                <td><a class='fa fa-edit' href='/?controller=question&action=getQuestion&id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/?controller=question&action=deleteQuestion&id=<?= $val->id ?>'></a></td>
               </tr>
           <?php endforeach;
 
@@ -42,8 +42,7 @@
           
         </tbody>
       </table>
-      <!-- modifier lien --><a data-confirm="Are you sure? You won&#39;t be able to further edit this exercise" class="button" rel="nofollow" data-method="put" href="/"><i class="fa fa-comment"></i> Complete and be ready for answers</a>
-
+      <a data-confirm="Are you sure? You won&#39;t be able to further edit this exercise" class="button" rel="nofollow" data-method="put" href="?controller=exercise&action=updateStateExercise&id=<?=$_SESSION['exId']?>&editedState=2"><i class="fa fa-comment"></i> Complete and be ready for answers</a>
     </section>
     <section class="column">
       <h1>New Field</h1>

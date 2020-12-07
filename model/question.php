@@ -36,9 +36,12 @@ class question{
     public static function updateById($id,$editedTitle,$editedType)
     {
         $db = db::connect();
-        $req = "UPDATE `questions` SET title=?,type=?  WHERE idQuestions = ? ";
+        $req = "UPDATE `questions` SET title=?,`type`=?  WHERE idQuestions = ? ";
+        
         $stmt = $db->prepare($req);
+        
         $stmt->execute(array($editedTitle,$editedType,$id));
+        var_dump($stmt->debugDumpParams());
     }
 
     
@@ -56,6 +59,18 @@ class question{
         $req = "DELETE FROM `questions` WHERE idQuestions = ?";
         $stmt = $db->prepare($req);
         $stmt->execute(array($id));
+    }
+
+    public static function getQuestion($id)
+    {
+        
+        $db = db::connect();
+        $req = "SELECT * FROM `questions` WHERE idQuestions = ?";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($id));
+        $result = $stmt->fetch();
+        $que = new question($result['idQuestions'],$result['title'],$result['type'],$result['FK_idExercises']);
+        return $que;
     }
 
 }

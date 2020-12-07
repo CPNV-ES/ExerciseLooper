@@ -11,6 +11,7 @@ class exerciseController
 
     function takeExercise()
     {
+        $modelEx = new exercise();
         require "view/takeExerciseView.php";
     }
 
@@ -21,9 +22,17 @@ class exerciseController
 
     function manageExercise()
     {
+        $modelEx = new exercise();
         require "view/showExerciseView.php";
     }
 
+    function updateStateExercise()
+    {
+        $editedvalue = $_GET['editedState'];
+        $value = $_GET['id'];
+        exercise::updateStateById($editedvalue,$value);
+        header("Location: /?controller=exercise&action=manageExercise");
+    }
     function errorPage404()
     {
         require "view/errorPage404.php";
@@ -32,7 +41,7 @@ class exerciseController
     {
         $value = $_GET['id'];
         exercise::deleteById($value);
-        require "view/showExerciseView.php";
+        header("Location: /?controller=exercise&action=manageExercise");
     }
 
     function newExercise()
