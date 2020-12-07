@@ -1,7 +1,7 @@
 <header class="heading managing">
   <section class="container">
     <a href="/"><img src="../content/img/logo.png" /></a>
-    <span class="exercise-label">New exercise</span>
+    <span class="exercise-label"><?=$ex->title?></span>
   </section>
 </header>
 <main class="container">
@@ -29,7 +29,7 @@
                   <p><?= $val->title ?></p>
                 </td>
                 <td>
-                  <p><?= $val->type ?></p>
+                  <p><?= $val->typeName ?></p>
                 </td>
                 <td><a class='fa fa-edit' href='/?controller=question&action=getQuestion&id=<?=$val->id?>'></a> <a class='fa fa-trash' href='/?controller=question&action=deleteQuestion&id=<?= $val->id ?>'></a></td>
               </tr>
