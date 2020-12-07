@@ -11,13 +11,13 @@
 
 <main class="container"> 
 <ul class="ansering-list"> 
-  <?php foreach($modelEx->getByState(1) as $value) {?>
+  <?php foreach($modelEx->getByState(2) as $value):?>
     <li class="row">
       <div class="column card">
-        <div class="title"> <?php echo($value['title']);?></div>
-        <a class="button" href="148/fulfillments/new.html">Take it</a>
+        <div class="title"> <?=$value['title'];?></div>
+        <a class="button" href="/?controller=response&action=getResponse&id=<?=$value['idExercises']?>">Take it</a>
       </div>
     </li>
 </ul>
-  <?php }?>
+  <?php endforeach;?>
 </main>
