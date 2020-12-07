@@ -21,9 +21,9 @@
           <!-- Affichage de la liste des questions dans l'exercice -->
           <?php
           $data = "";
-          if (isset($_SESSION['questions'])) {
+          if (isset($questions)) {
 
-            foreach ($_SESSION['questions'] as $val) : ?>
+            foreach ($questions as $val) : ?>
               <tr>
                 <td>
                   <p><?= $val->title ?></p>

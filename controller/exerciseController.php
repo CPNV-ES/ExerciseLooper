@@ -57,7 +57,6 @@ class exerciseController
         $ex = new exercise();
         $ex->getById($id);
         $questions = question::getByIdExercises($ex->id);
-        $_SESSION['questions'] =  $questions;
         $_SESSION['exId'] = $id;
         require "view/fieldExerciseView.php";
     }
