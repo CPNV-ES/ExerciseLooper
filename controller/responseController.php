@@ -1,27 +1,21 @@
 <?php
-<<<<<<< HEAD
 require_once "model/response.php";
+require_once "model/question.php";
+require_once "model/fullfilment.php";
 
 class responseController
 {
     function getResponse()
     {
         $value = $_GET['id'];
-        $response = response::getByIdQuestion($value);
+        $question = question::getQuestionExName($value);
         require "view/responseView.php";
-=======
+    }
 
-require_once "model/question.php";
-require_once "model/response.php";
-
-class responseController{
-
-    function displayResults($idExercise){
-        $modelQu = question::getByIdExercises($idExercise);
-        $modelEx = new exercise();
-        $modelEx->getById($idExercise);
-        require "view/showResultsView.php";
->>>>>>> Dev
+    function addResponse()
+    {        
+        require "view/test.php";
+        //response::createResponse($_POST);
     }
 }
 ?>

@@ -1,43 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : mar. 29 sep. 2020 à 09:37
--- Version du serveur :  8.0.21
--- Version de PHP : 7.4.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `exerciseLooper`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `exercises`
---
-
-CREATE TABLE `exercises` (
-  `idExercises` INT NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
-  `state` int NOT NULL,
-   CONSTRAINT exercises_PK PRIMARY KEY (idExercises)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `exercises`
---
-
 INSERT INTO `exercises` (`title`, `state`) VALUES
 ('TestExercice', 1),('Exercice2', 1),('Exercice4', 1),('Exercice5', 2),('Exercice6', 3),('Exercice7', 2),('Exercice8', 1),('Exercice9', 3),("Megan Justice",2),
 ("Lani Velez",2),("Fitzgerald Mcfarland",1),("Kristen Kidd",2),("Stuart Allen",2),("Cade Randall",1),("Kirsten Weber",3),("Clark Mitchell",1),("Yoshio Lester",1),("Erasmus Buck",1),
@@ -50,29 +10,6 @@ INSERT INTO `exercises` (`title`, `state`) VALUES
 ("Zenia Good",3),("Naomi Summers",3),("Gareth Ayala",1),("Glenna Greene",2),("Louis Porter",2),("Mannix Dale",3),("Todd Watts",3),("Venus Moody",2),("William Washington",3),("Fredericka Vang",3),
 ("Samantha Harrington",2),("Jenna Bond",2),("Zeus Dennis",3),("Yardley Carroll",1),("Valentine Johnston",2),("Elijah Flowers",3),("Alma Mcpherson",1),("Aimee Allen",2),("Judith Odonnell",1),("Lana Pruitt",1),
 ("Hayes Dyer",3),("Isadora Acosta",3),("Jasper Dalton",1),("Miranda Atkinson",3),("Ignatius Morrison",3),("Carol Booker",3),("Cruz Kramer",3),("Logan Coffey",2),("Summer Slater",2),("Gloria Roman",1);
-
-
--- --------------------------------------------------------
--- --------------------------------------------------------
-
---
--- Structure de la table `questions`
---
-
-CREATE TABLE `questions` (
-  `idQuestions` INT NOT NULL AUTO_INCREMENT,
-  `title` text NOT NULL,
-  `type` int NOT NULL,
-  `FK_idExercises` int NOT NULL,
-   CONSTRAINT questions_PK PRIMARY KEY (idQuestions),
-  INDEX `FK_idExercises` (FK_idExercises),
-  FOREIGN KEY (FK_idExercises)
-  	REFERENCES exercises(idExercises) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `questions`
---
 
 INSERT INTO `questions` (`idQuestions`, `title`, `type`, `FK_idExercises`) VALUES
 (1, 'Question1', 1, 1),
@@ -141,26 +78,9 @@ INSERT INTO `questions` (`idQuestions`, `title`, `type`, `FK_idExercises`) VALUE
 (64, 'questions8', 1, 22),
 (65, 'questions9', 1, 22);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `responses`
---
-
-CREATE TABLE `responses` (
-  `idResponses` INT NOT NULL AUTO_INCREMENT,
-  `content` varchar(100) DEFAULT NULL,
-   `FK_idQuestions` int NOT NULL,
-    CONSTRAINT responses_PK PRIMARY KEY (idResponses),
-   INDEX `FK_idQuestions` (FK_idQuestions),
-  FOREIGN KEY (FK_idQuestions)
-  	REFERENCES questions(idQuestions) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Déchargement des données de la table `responses`
 --
-INSERT INTO `responses` (`idResponses`, `FK_idQuestions`, `content`) VALUES
+INSERT INTO `responses` (`idResponses`, `FK_idQuestions`, `content`,'fullfilments') VALUES
 (1, 1, 'COUCOU 1'),
 (2, 2, 'COUCOU2'),
 (3, 3, 'COUCOU3'),
@@ -290,25 +210,6 @@ INSERT INTO `responses` (`idResponses`, `FK_idQuestions`, `content`) VALUES
 (129, 63, 'COUCOU63'),
 (130, 64, 'COUCOU64'),
 (131, 65, 'COUCOU65');
---
--- Structure de la table `fullfilments`
---
-
-CREATE TABLE `fullfilments` (
-  `idFullfilments` INT NOT NULL AUTO_INCREMENT,
-  `date` timestamp NOT NULL,
-    `FK_idExercises` INT NOT NULL,
-    `FK_idResponses` INT NOT NULL,
-  CONSTRAINT fullfilments_PK PRIMARY KEY (idFullfilments),
-  INDEX `FK_idExercises` (FK_idExercises),
-  INDEX `FK_idResponses` (FK_idResponses),
-  FOREIGN KEY (FK_idResponses)
-  	REFERENCES responses(idResponses) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `fullfilments`
---
 
 INSERT INTO `fullfilments` (`FK_idExercises`, `FK_idResponses`, `date`) VALUES
 (1, 1, '2018-08-20 00:00:00'),

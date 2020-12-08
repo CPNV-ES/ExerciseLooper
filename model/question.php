@@ -62,8 +62,7 @@ class question{
     }
 
     public static function getQuestion($id)
-    {
-        
+    {        
         $db = db::connect();
         $req = "SELECT * FROM `questions` WHERE idQuestions = ?";
         $stmt = $db->prepare($req);
@@ -71,6 +70,17 @@ class question{
         $result = $stmt->fetch();
         $que = new question($result['idQuestions'],$result['title'],$result['type'],$result['FK_idExercises']);
         return $que;
+    }
+
+    public static function getQuestionExName($id)
+    {
+        $array = [];
+        $db = db::connect();
+        $req = "SELECT `idQuestions`, questions.title AS `Qtitle`, `type`, `Fk_idExercises`, exercises.title AS `Etitle` FROM `questions` INNER JOIN `exercises` WHERE questions.FK_idExercises = exercises.idExercises AND exercises.idExercises = ?";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($id));
+        
+        return $result = $stmt->fetchAll();;
     }
 
 }
