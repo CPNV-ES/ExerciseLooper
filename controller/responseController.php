@@ -13,9 +13,10 @@ class responseController
     }
 
     function addResponse()
-    {        
-        require "view/test.php";
-        //response::createResponse($_POST);
+    {
+        $id = fullfilments::create($_POST['fullfilmentId']);
+        response::createResponse($_POST['question'],$id);
+        header("Location: /index");
     }
 }
 ?>

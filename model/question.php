@@ -7,6 +7,7 @@ class question{
     public $id;
     public $title;
     public $type;
+    public $typeName;
     public $FK_idExercises;
 
     public function __construct($id,$title,$type,$fk_ex)
@@ -28,6 +29,7 @@ class question{
         foreach ($result as $Key) {
 
             $que = new question($Key['idQuestions'],$Key['title'],$Key['type'],$Key['FK_idExercises']);
+            $que->fetchTypeByName();
             $array[] = clone $que;
         }
         return $array;
@@ -69,6 +71,7 @@ class question{
         $stmt->execute(array($id));
         $result = $stmt->fetch();
         $que = new question($result['idQuestions'],$result['title'],$result['type'],$result['FK_idExercises']);
+        $que->fetchTypeByName();
         return $que;
     }
 
@@ -80,7 +83,23 @@ class question{
         $stmt = $db->prepare($req);
         $stmt->execute(array($id));
         
-        return $result = $stmt->fetchAll();;
+        return $result = $stmt->fetchAll();
+    }
+    
+    private function fetchTypeByName()
+    {
+        switch($this->type){
+
+            case 1:
+                $this->typeName = "Single line";
+                break;
+            case 2:
+                $this->typeName = "Single line list";
+                break;
+            case 3:
+                $this->typeName = "Multi line";
+                break;
+        }
     }
 
 }

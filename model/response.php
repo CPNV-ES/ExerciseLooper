@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class response{
+class response
+{
 
     public $id;
     public $content;
@@ -8,16 +9,18 @@ class response{
 
     public  function __construct()
     {
-        
     }
-    public static function createResponse($content,$fullfilment)
+    public static function createResponse($content, $fullfilment)
     {
+        echo($fullfilment);
         $db = db::connect();
-        $req = "INSERT INTO `responses` VALUES(`?`,?,?)";
+        $req = "INSERT INTO `responses` (`FK_idQuestions`, `FK_idFullfilments`, `content`)VALUES(?,?,?)";
         $stmt = $db->prepare($req);
-        $stmt->execute(array($content));
+        foreach ($content as $key => $value) {
+            $stmt->execute(array($key, $fullfilment, $value));
+        }
     }
-    
+
     public static function getByIdQuestion($id)
     {
         $db = db::connect();
@@ -36,14 +39,14 @@ class response{
         return $array;
     }
 
-    public static function updateById($id,$editedContent)
+    public static function updateById($id, $editedContent)
     {
         $db = db::connect();
         $req = "UPDATE `responses` SET content=?, WHERE idResponses = ? ";
         $stmt = $db->prepare($req);
-        $stmt->execute(array($editedContent,$id));
+        $stmt->execute(array($editedContent, $id));
     }
-    
+
     private static function deleteResponseById($id)
     {
         $db = db::connect();
@@ -52,7 +55,3 @@ class response{
         $stmt->execute(array($id));
     }
 }
-
-
-
-?>

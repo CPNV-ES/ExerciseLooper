@@ -10,20 +10,20 @@
 
   <form method="post" action="/?controller=response&action=addResponse">
     <div class="field">
+      <input type="hidden" name="fullfilmentId" value="<?= $question[0]['Fk_idExercises']?>" />
       <?php
       foreach ($question as $key) : ?>
-        <input type="hidden" name="question[]" value="<?= $key['idQuestions'] ?>" />
         <label for=<?= $key['Qtitle'] ?>><?= $key['Qtitle'] ?></label>
 
       <?php
         if($key['type'] == 2 || $key['type'] == 3){
           ?>
-          <textarea name="question[<?= $key['Qtitle'] ?>]"></textarea>
+          <textarea name="question[<?= $key['idQuestions'] ?>]"></textarea>
         <?php
         }
         else{
           ?>
-        <input type="text" name="question[<?= $key['Qtitle'] ?>]"/>
+        <input type="text" name="question[<?= $key['idQuestions'] ?>]"/>
         <?php
         }
 
