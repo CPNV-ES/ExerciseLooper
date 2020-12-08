@@ -20,11 +20,29 @@ class response
             $stmt->execute(array($key, $fullfilment, $value));
         }
     }
-
-    public static function getByIdQuestion($id)
+    
+    /*public static function getByIdQuestion($id)
     {
         $db = db::connect();
         $req = "SELECT `idResponses`,`content`,`FK_idQuestions` FROM `responses` WHERE FK_idQuestions = ?";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($id));
+        $result = $stmt->fetchAll();
+
+        foreach ($result as $Key) {
+
+            $que = new response();
+            $que->id = $Key['idResponses'];
+            $que->content = $Key['content'];
+            $array[] = clone $que;
+        }
+        return $array;
+    }*/
+
+    public static function getByIdFullfilment($id)
+    {
+        $db = db::connect();
+        $req = "SELECT `idResponses`,`content` FROM `responses` WHERE FK_idFullfilments = ?";
         $stmt = $db->prepare($req);
         $stmt->execute(array($id));
         $result = $stmt->fetchAll();

@@ -1,7 +1,9 @@
 <?php
 require_once "model/response.php";
 require_once "model/question.php";
+require_once "model/response.php";
 require_once "model/fullfilment.php";
+require_once "model/response.php";
 
 class responseController
 {
@@ -12,6 +14,12 @@ class responseController
         require "view/responseView.php";
     }
 
+    function displayResults($idExercise){
+        $modelQu = question::getByIdExercises($idExercise);
+        $modelFu = fullfilments::getByIdExercise($idExercise);
+        $modelEx = new exercise();
+        $modelEx->getById($idExercise);
+        require "view/showResultsView.php";
     function addResponse()
     {
         $id = fullfilments::create($_POST['fullfilmentId']);
