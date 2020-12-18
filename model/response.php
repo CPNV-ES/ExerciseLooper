@@ -5,7 +5,6 @@ class response
 
     public $id;
     public $content;
-    public $FK_idQuestions;
 
     public  function __construct()
     {

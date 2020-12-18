@@ -14,7 +14,6 @@
     <input type="text" name="exercise[title]" id="exercise_title" />
   </div>
   <div class="actions">
-    <!--<input type="submit" name="commit" value="Create Exercise" data-disable-with="Create Exercise" />-->
       <button id="title" type="submit">Create Exercise</button>
     </form>
   </div>
