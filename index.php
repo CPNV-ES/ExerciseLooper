@@ -4,6 +4,7 @@ session_start();
 require_once "controller/exerciseController.php";
 require_once "controller/questionController.php";
 require_once "controller/responseController.php";
+require_once "controller/fullfilmentController.php";
 
 $controller = $_GET['controller'] . "Controller";
 $action = $_GET['action'];

@@ -21,23 +21,14 @@ class response
         }
     }
     
-    /*public static function getByIdQuestion($id)
+    public static function getByFks($idQuestion,$idFullfilment)
     {
         $db = db::connect();
-        $req = "SELECT `idResponses`,`content`,`FK_idQuestions` FROM `responses` WHERE FK_idQuestions = ?";
+        $req = "SELECT `content` FROM `responses` WHERE FK_idQuestions = ? AND FK_idFullfilments = ?";
         $stmt = $db->prepare($req);
-        $stmt->execute(array($id));
-        $result = $stmt->fetchAll();
-
-        foreach ($result as $Key) {
-
-            $que = new response();
-            $que->id = $Key['idResponses'];
-            $que->content = $Key['content'];
-            $array[] = clone $que;
-        }
-        return $array;
-    }*/
+        $stmt->execute(array($idQuestion, $idFullfilment));
+        return $result = $stmt->fetch();
+    }
 
     public static function getByIdFullfilment($id)
     {
@@ -56,6 +47,7 @@ class response
         }
         return $array;
     }
+
 
     public static function updateById($id, $editedContent)
     {

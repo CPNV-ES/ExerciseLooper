@@ -25,6 +25,16 @@ class fullfilments{
         return $db->lastInsertId();
     }
 
+
+    public static function getById($id){
+        $db = db::connect();
+        $req = "SELECT `idFullfilment`, `date`,`FK_idExercises` FROM `fullfilments` WHERE `idFullfilment` = ?";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($id));
+        return $result = $stmt->fetch();
+    }
+
+
     public static function getByIdExercise($id){
         $db = db::connect();
         $req = "SELECT `idFullfilment`, `date`,`FK_idExercises` FROM `fullfilments` WHERE FK_idExercises = ?";
@@ -39,6 +49,18 @@ class fullfilments{
         }
         return $array;
     }
+
+    public static function getByIdQuestion($id)
+    {
+        $db = db::connect();
+        $req = "SELECT idFullfilment,`date`, content, FK_idExercises FROM responses 
+        INNER JOIN fullfilments f on responses.FK_idFullfilments = f.idFullfilment WHERE FK_idQuestions = ? ORDER BY date";
+        $stmt = $db->prepare($req);
+        $stmt->execute(array($id));
+        return $result = $stmt->fetchAll();
+    }
+
+
 
 
 }

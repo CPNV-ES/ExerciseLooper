@@ -79,12 +79,19 @@ class exercise
         return $array;
     }
 
+    public static function getTitleByIdQuestion($id){
+        $db = db::connect();
+        $stmt =$db->prepare("SELECT `idExercises`, exercises.title FROM exercises INNER JOIN questions q on exercises.idExercises = q.FK_idExercises WHERE idQuestions = ?");
+        $stmt->execute(array($id));
+        return $result = $stmt->fetch();
+
+    }
+
     public static function getByState($state)
     {
         $db = db::connect();
         $stmt =$db->prepare("SELECT `idExercises`,`title`,`state` FROM `exercises` WHERE `state` = ?");
         $stmt->execute(array($state));
-        $result = $stmt->fetchAll();
-        return $result;
+        return $result = $stmt->fetchAll();
     }
 }

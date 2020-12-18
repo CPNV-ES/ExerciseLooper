@@ -4,7 +4,7 @@ require_once "model/response.php";
 <header class="heading results">
     <section class="container">
         <a href="/"><img src="../content/img/logo.png"/></a>
-        <span class="exercise-label">Exercise: <?=$modelEx->title?></span>
+        <span class="exercise-label">Exercise: <a href="?controller=response&action=displayResults&id=<?=$modelEx->id?>"><?=$modelEx->title?></a></span>
     </section>
 </header>
 
@@ -12,12 +12,12 @@ require_once "model/response.php";
     <body>
     <div class="row">
         <section class="column">
-            <table class="records">
+            <table>
                 <thead>
                 <tr>
                     <th>Take</th>
                     <?php foreach ($modelQu as $value): ?>
-                    <th><?=$value->title?></th>
+                        <th><a href="?controller=fullfilment&action=showResponses&id=<?=$value->id?>"><?=$value->title?></a></th>
                     <?php endforeach; ?>
                 </tr>
                 </thead>
