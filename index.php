@@ -1,33 +1,35 @@
 <?php
-define('SITE_PATH', realpath(dirname(__FILE__)));
-$site_url = str_replace('\\', '/', str_replace(realpath( $_SERVER['DOCUMENT_ROOT']), '', SITE_PATH));
-define('SITE_URL', 'http://'.$_SERVER['HTTP_HOST']. $site_url);
 
-require_once SITE_PATH . "\controller\controller.php";
+session_start();
+require_once "controller/exerciseController.php";
+require_once "controller/questionController.php";
+require_once "controller/responseController.php";
+require_once "controller/fullfilmentController.php";
 
-try {
-    
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
-        switch ($action) {
-            
-            case 'homeView' :
-                homePage();
-                break;
-           
-            case 'take' :
-                takeExercise();
-                break;
-            /*
-            case 'vue_inscription' :
-                inscription(@$_POST['fisrt_name'], @$_POST['last_name'], @$_POST['email'], @$_POST['username'], @$_POST['password'], @$_POST['conf_password']);
-                break;*/
-            default :
-                throw new Exception("Action non valide");
-        }
-    } else
-        
-        homePage();
-} catch (Exception $e) {
-    erreur($e->getMessage());
+$controller = $_GET['controller'] . "Controller";
+$action = $_GET['action'];
+
+if(isset($_GET['id'])){
+    $id = intval($_GET['id']);
 }
+if (empty($controller) || empty($action)) {
+    require_once "view/homeView.php";
+} else {
+    if (class_exists($controller)) {
+        $ctr = new $controller();
+        if (method_exists($ctr, $action)) {
+            if (isset($id)) {
+                $ctr->$action($id);
+            } else {
+                $ctr->$action();
+            }
+        } else {
+            require_once "view/errorPage404.php";
+        }
+    } else {
+        require_once "view/errorPage404.php";
+    }
+}
+
+require "view/template.php";
+?>
